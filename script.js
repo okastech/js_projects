@@ -42,9 +42,28 @@ function checkRequired(inputArr) {
 function getFiledName(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
+
+// Check input Length
+function checkLength(input, min, max) {
+  if (input.value.length < min) {
+    showError(
+      input,
+      `${getFiledName(input)} must be at least ${min} characters`
+    );
+  } else if (input.value.length > max) {
+    showError(
+      input,
+      `${getFiledName(input)} must be less than ${max} characters`
+    );
+  } else {
+    showSuccess(input);
+  }
+}
 //Event Listeners
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   checkRequired([username, email, password, password2]);
+  checkLength(username, 3, 15);
+  checkLength(password, 6, 20);
 });
