@@ -47,7 +47,7 @@ function checkRequired(inputArr) {
     } else {
       showSuccess(input);
     }
-  });
+  }); 
 }
 
 //Getting FiledName
